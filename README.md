@@ -5,6 +5,12 @@ A binary encoding schema that encodes binary data (such as URL or private key)
 
 When we exchange a piece of data, it is encoded in base64 to form a printable text and then stored and transmitted. The content could be more meaningful and easier to remember if we invent an encoding schema between binary data and Chinese characters. Chinese characters have a high information density, and more than a billion people can recognize and easily remember them. Encoding binary data into Chinese characters by HAN256 will make it easy to record or compare this data manually.
 
+## Source code
+
+This repository provided source code in 3 different languages:
+1. Javascript source code
+2. C/C++ source code for performance
+
 ## HAN256 conversion table
 
 HAN256 established a basic character set (composed of 256 most commonly used Chinese characters). The converter will map every 8 bits of data into one of those 256 characters:
