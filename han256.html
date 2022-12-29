@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HAN256 Convertor Demo</title>
+    <script src="han256.js" charset="utf8"></script>
+    <script>
+      function onCLickBinary2hanzi() {
+        var bString = window.atob(document.getElementById("base64Text").value);
+        var bytes = new Uint8Array(bString.length);
+        for (var i = 0; i < bString.length; i++) {
+          bytes[i] = bString.charCodeAt(i);
+        }
+        document.getElementById("han256Text").value = binary2hanzi(
+          bytes.buffer
+        );
+      }
+
+      function onCLickHanzi2binary() {
+        bytes = new Uint8Array(
+          hanzi2binary(document.getElementById("han256Text").value)
+        );
+        bString = "";
+        Array.from(bytes).forEach((code) => {
+          bString = bString + String.fromCharCode(code);
+        });
+        document.getElementById("base64Text").value = window.btoa(bString);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>HAN256 Convertor Demo</h1>
+    <p>Created by Luke on 2022-12-28</p>
+    <h4>Base64</h4>
+    <textarea id="base64Text" name="base64Text" rows="4" cols="50"></textarea>
+    <input type="submit" value="binary2hanzi" onClick="onCLickBinary2hanzi()" />
+    <h4>HAN256</h4>
+    <textarea id="han256Text" name="han256Text" rows="4" cols="50"></textarea>
+    <input type="submit" value="hanzi2binary" onClick="onCLickHanzi2binary()" />
+  </body>
+</html>
